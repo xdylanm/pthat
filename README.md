@@ -1,2 +1,2 @@
 # pthat
-8 channel pressure/temperature sensing hat for Raspberr Pi
+8 channel pressure/temperature sensing hat for Raspberry Pi
