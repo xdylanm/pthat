@@ -1,24 +1,22 @@
-from spidev import SpiDev
 from gpiozero import PWMLED
-from pthat.chips.ADC120 import *
-from pthat.chips.MAX31856 import *
-from spilite.spilite import *
+from .chips.ADC120 import *
+from .chips.MAX31856 import *
+import spilite.spi as spi
+from spilite.cs.decoders import AddressDecoder, ChipSelectDecoder
+from spilite.cs.pins import ChipSelectPin, ActiveHighPin
 from time import sleep
 
-class PTHat:
+class Controller:
     def __init__(self, T_channels=[i for i in range(8)], spi_bus_speed_hz=2000000):
         self.status_leds = [PWMLED(i) for i in range(22,26)]
-        self.cs_decoder = AddressDecoder([5,6,12], ActiveHighPin(13))
-        print("T_channels={}".format(T_channels))
-        self.probe_T = [MAX31856(SpiLite(
-            SpiDev(),
-            cs=ChipSelectDecoder(i,self.cs_decoder),
+        addr_demux = AddressDecoder([5,6,12], ActiveHighPin(13))
+        self.probe_T = [MAX31856(spi.Port(
+            cs=ChipSelectDecoder(i,addr_demux),
             max_speed_hz=spi_bus_speed_hz,
             mode=0b11)) for i in T_channels]
         cs_ADC = ChipSelectPin(21)
         cs_ADC.unselect()
-        self.probe_P = ADC120(SpiLite(
-            SpiDev(),
+        self.probe_P = ADC120(spi.Port(
             cs=cs_ADC,
             max_speed_hz=spi_bus_speed_hz,
             mode=0b11))
