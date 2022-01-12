@@ -117,7 +117,7 @@ class MAX31856:
     def temperature_fault_thresholds(self,val):
         """Set the linearized tempeature high/low fault threshold registers.
         Input is a 2-tuple of floats with (low fault threshold, high fault threshold)"""
-        if len(val) is not 2:
+        if len(val) != 2:
             raise ValueError("Expecting a tuple with low and high temperature thresholds")
         if abs(val[0]) > 2047 or abs(val[1]) > 2047:
             raise ValueError("The temperature threshold is out of range")
