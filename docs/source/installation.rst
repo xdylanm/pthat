@@ -62,15 +62,51 @@ Connecting the PTHat
 
 **Shutdown and remove power from the Rasberry Pi. Ensure all cables are disconnected.**
 
-Connect the board with the ribbon cable. 
+Four parts are required for assembly: the ribbon cable, the base housing (with fan and PTHat board mounted), the sled holding the Raspberry Pi, and the cover. 
+
+.. image:: images/assembly_step0_sm.jpg
+
+Connect the board with the ribbon cable. Feed the female end of the ribbon cable through the slot from the inside of the base housing.
+
+.. image:: images/assembly_step1_sm.jpg
 
 .. note:: 
   The ribbon cable is not keyed and there may be additional space in the connector at either end that will allow the pins to be offset by a position. *Ensure that the male end of the cable is correctly aligned with the header on the board*.
   
+.. image:: images/assembly_step2_sm.jpg
+
+Next, feed the female end of the ribbon cable through the slot in the cover. Note that the cutouts for the USB & ethernet ports should be at the same end as the fan.
+
+.. image:: images/assembly_step3_sm.jpg
+
+Attach the female end of the ribbon cable to the header on the Raspberry Pi. 
+
 .. note::
   Ensure that the cable is oriented correctly: when connected, the hat should be aligned with the Raspberry Pi such that the headers would connect if the cable were not present.
 
-Connect the ethernet cable to the Pi, then connect the power. Once the Pi has booted, re-connect over SSH. Navigate to the ``~/Source/pthat`` folder and run the following test:
+.. image:: images/assembly_step4_sm.jpg
+
+Fit the cover over the Raspberry Pi mounted on the sled. Start at the end with the USB & ethernet ports and slide those into the cutouts before bringing the cover down to the top of the sled. Be careful not to force the cover over the audio port or the MicroSD card.
+
+.. image:: images/assembly_step5_sm.jpg
+
+Before inserting the cover into the base housing, the upper and lower halves of the assembly should appear align as shown below
+
+.. image:: images/assembly_step6_sm.jpg
+
+Insert the cover and sled into the base housing. The PTHat module is assembled.
+
+.. image:: images/assembly_step7_sm.jpg
+
+Connect the ethernet cable to the Pi, then connect the power. Feed the power cable (USB-C) up through the underside of the stand and inside the loop of the ribbon cable from the fan side.
+
+.. image:: images/assembly_step8_sm.jpg
+
+The PTHat module should sit in the stand as shown below (ethernet cable disconnected).
+
+.. image:: images/assembly_step9_sm.jpg
+
+Once the Pi has booted, re-connect over SSH. Navigate to the ``~/Source/pthat`` folder and run the following test:
 
 .. code-block:: bash
 
